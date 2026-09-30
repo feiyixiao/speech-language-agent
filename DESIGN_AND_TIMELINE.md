@@ -1,5 +1,7 @@
 # Speech Language Learning Agent — 设计与时间线
 
+> **2026-09-30 更新**：Phase 1–3 的大部分已完成，但和原计划有几处不同。**可观测性**改用本地 JSONL trace 加 `scripts/trace_report.py`，不依赖 W&B/Weave 账号，以后可以接 Langfuse 或 Cloud Logging。**评估**是 eval/ 下的自建种子集加 v1/v2/v3 对比，W&I+LOCNESS 还没接入。**部署**目标从 HF Spaces 改成 FastAPI + Docker + Cloud Run，对口 Retorio 这类岗位；CI 已写好，但还没真正部署。架构、结果和踩坑分别见 README.md、eval/RESULTS.md、INCIDENTS.md。
+
 面向语言学习者的语音反馈智能体。用户上传一段口语录音（或直接输入文本），系统转录后同时给出 **语法纠错 / 词汇建议 / 逐词发音评分** 三类反馈，并跨轮记忆用户的历史错误。目标语言：英/德/日/普通话。
 
 这份文档记录整体设计、4 阶段时间线，以及 **MLOps（W&B / Docker / HF Spaces）如何自然融入**——注意本项目主要是「推理型 LLM 应用」，不训练大模型，所以 MLOps 的用法和训练类项目不同。

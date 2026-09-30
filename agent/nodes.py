@@ -1,90 +1,123 @@
-import os
-from dotenv import load_dotenv
-from langchain_groq import ChatGroq
-from langchain_core.prompts import ChatPromptTemplate
+"""LangGraph nodes. Each node is async, returns only the keys it owns, and
+degrades (records itself in `degraded`) instead of failing the whole request."""
+import asyncio
+import re
 
-load_dotenv()
+from agent.config import settings
+from agent.llm import LLMUnavailable, structured_call
+from agent.schemas import (GrammarFeedback, KnowledgeAnswer, RouterDecision,
+                           VocabFeedback)
 
-llm = ChatGroq(model="llama-3.1-8b-instant")
+# v3 router (eval/RESULTS.md): v2 sent everyday questions written in the target
+# language ("Kannst du mich helfen?") to the knowledge branch — INCIDENTS.md #2.
+ROUTER_SYSTEM = (
+    "You route inputs from a learner of {lang}. Decide the intent:\n"
+    "- practice: any sentence the learner produced in {lang} — statements AND everyday questions "
+    "(asking for help, time, prices, directions, feelings). These get grammar feedback.\n"
+    "- question: the learner asks ABOUT {lang} itself — a grammar rule, which form is correct, "
+    "a word's meaning, or pronunciation. Usually it mentions a word in quotes, a grammar term, "
+    "or 'say', 'mean', 'use', 'pronounce', 'correct'.\n"
+    "Examples (none of these are in the eval set): 'Could you open the window?' -> practice. "
+    "'Wie viel kostet das Ticket?' -> practice. 'Is it \"much\" or \"many\" people?' -> question. "
+    "'Was bedeutet \"Feierabend\"?' -> question. 'Is \"I am boring\" wrong when I mean bored?' -> question.\n"
+    "Return JSON."
+)
 
-grammar_prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a language teacher. The user is learning {target_language}. "
-               "First, check if the sentence has any grammar errors. "
-               "If the sentence is correct, say 'Your sentence is grammatically correct!' and give one brief compliment. "
-               "If there are errors, identify each one, explain briefly, and provide the corrected version. "
-               "Do NOT invent errors that do not exist.\n\n"
-               "Past errors this session: {error_history}\n"
-               "If the current error matches a past one, start your response with "
-               "'You made this mistake before: [error]. Let's fix it again!'"),
-    ("human", "{transcript}")
-])
+GRAMMAR_SYSTEM = (
+    "You are a precise {lang} teacher. Check the learner's sentence for grammar errors only "
+    "(not style, not punctuation, not capitalisation of a spoken transcript). "
+    "Do NOT invent errors: if the sentence is grammatical, return has_error=false and an empty list. "
+    "For each real error copy the wrong span into `original`, give the `correction`, pick the "
+    "closest error_type, and explain in one sentence. Return JSON."
+)
 
-vocabulary_prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a language teacher. The user is learning {target_language}. "
-               "Suggest 2-3 better or more natural word choices for their sentence. "
-               "Keep suggestions concise.\n\n"
-               "Past errors this session: {error_history}\n"
-               "If the user is repeating a weak vocabulary pattern from before, point it out gently."),
-    ("human", "{transcript}")
-])
+VOCAB_SYSTEM = (
+    "You are a {lang} teacher. Suggest at most 3 more natural or more precise word choices for "
+    "the learner's sentence. If the wording is already natural, return an empty list. Return JSON."
+)
 
-def grammar_node(state: dict) -> dict:
-    error_history = state.get("error_history", [])
-    chain = grammar_prompt | llm
-    result = chain.invoke({
-        "transcript": state["transcript"],
-        "target_language": state.get("target_language", "English"),
-        "error_history": ", ".join(error_history) if error_history else "none yet"
-    })
-    feedback = result.content
-    # extract new errors into history
-    if "grammatically correct" not in feedback.lower():
-        error_history = error_history + [state["transcript"]]
-    return {**state, "result": feedback, "task": "grammar", "error_history": error_history}
+RAG_SYSTEM = (
+    "You are a language teacher. Answer the learner's question in at most 4 sentences using the "
+    "context below. Set grounded=true only if the context supports the answer; otherwise answer "
+    "from general knowledge and set grounded=false. Return JSON.\n\nContext:\n{context}"
+)
 
-def vocabulary_node(state: dict) -> dict:
-    error_history = state.get("error_history", [])
-    chain = vocabulary_prompt | llm
-    result = chain.invoke({
-        "transcript": state["transcript"],
-        "target_language": state.get("target_language", "English"),
-        "error_history": ", ".join(error_history) if error_history else "none yet"
-    })
-    return {**state, "result": result.content, "task": "vocabulary", "error_history": error_history}
+_QUESTION_RE = re.compile(
+    r"^(when|how|what|why|which|is it|can i|should i|wann|wie|was|warum|welche|ist es)\b", re.I)
 
-def pronunciation_node(state: dict) -> dict:
-    from agent.pronunciation import assess_pronunciation, format_pronunciation_feedback
-    audio_path = state.get("audio_path", "")
-    transcript = state.get("transcript", "")
-    lang_map = {"English": "en-US", "German": "de-DE", "Japanese": "ja-JP", "Mandarin Chinese": "zh-CN"}
-    lang_code = lang_map.get(state.get("target_language", "English"), "en-US")
-    if not audio_path:
-        return {**state, "result": "No audio file available for pronunciation assessment.", "task": "pronunciation"}
-    scores = assess_pronunciation(audio_path, transcript, lang_code)
-    feedback = format_pronunciation_feedback(scores)
-    return {**state, "result": feedback, "task": "pronunciation"}
 
-def rag_node(state: dict) -> dict:
-    from agent.rag import answer_grammar_question
-    answer = answer_grammar_question(state["transcript"])
-    return {**state, "result": answer, "task": "knowledge_query"}
+def heuristic_intent(text: str) -> str:
+    """Fallback router used only when every LLM is down."""
+    t = text.strip()
+    return "question" if _QUESTION_RE.match(t) and t.endswith("?") else "practice"
 
-router_prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are classifying a language learner's sentence. "
-               "Decide what kind of feedback would be MOST useful:\n"
-               "- grammar: the sentence has a clear grammatical error\n"
-               "- vocabulary: the sentence is correct but word choices are unnatural or repetitive\n"
-               "- pronunciation: the user is asking about how to pronounce something\n"
-               "- knowledge_query: the user is asking a grammar or language question (e.g. 'when do I use...', 'what is...', 'how do I...')\n"
-               "If the sentence is correct and natural, reply 'vocabulary'.\n"
-               "Reply with only one word: grammar, vocabulary, pronunciation, or knowledge_query."),
-    ("human", "{transcript}")
-])
 
-def router_node(state: dict) -> dict:
-    chain = router_prompt | llm
-    result = chain.invoke({"transcript": state["transcript"]})
-    task = result.content.strip().lower()
-    if task not in ("grammar", "vocabulary", "pronunciation", "knowledge_query"):
-        task = "grammar"
-    return {**state, "task": task}
+async def router_node(state: dict) -> dict:
+    try:
+        system = ROUTER_SYSTEM.format(lang=state.get("target_language", "English"))
+        d = await structured_call("router", system, state["transcript"], RouterDecision)
+        return {"intent": d.intent}
+    except LLMUnavailable:
+        return {"intent": heuristic_intent(state["transcript"]), "degraded": ["router"]}
+
+
+async def grammar_node(state: dict) -> dict:
+    lang = state.get("target_language", "English")
+    try:
+        g = await structured_call("grammar", GRAMMAR_SYSTEM.format(lang=lang),
+                                  state["transcript"], GrammarFeedback)
+    except LLMUnavailable:
+        return {"degraded": ["grammar"]}
+    # keep the flag and the list consistent — models sometimes disagree with themselves
+    g.has_error = bool(g.errors)
+    history = list(state.get("error_history", []))
+    types = sorted({e.error_type for e in g.errors})
+    repeated = [t for t in types if t in history]
+    return {"grammar": g.model_dump(), "repeated_error_types": repeated,
+            "error_history": history + [t for t in types if t not in history]}
+
+
+async def vocabulary_node(state: dict) -> dict:
+    lang = state.get("target_language", "English")
+    try:
+        v = await structured_call("vocabulary", VOCAB_SYSTEM.format(lang=lang),
+                                  state["transcript"], VocabFeedback, temperature=0.3)
+        return {"vocabulary": v.model_dump()}
+    except LLMUnavailable:
+        return {"degraded": ["vocabulary"]}
+
+
+LANG_CODES = {"English": "en-US", "German": "de-DE", "Japanese": "ja-JP", "Mandarin Chinese": "zh-CN"}
+
+
+async def pronunciation_node(state: dict) -> dict:
+    if not state.get("audio_path"):
+        return {}
+    if not (settings.azure_speech_key and settings.azure_speech_region):
+        return {"degraded": ["pronunciation"]}
+    from agent.pronunciation import assess_pronunciation
+    lang = LANG_CODES.get(state.get("target_language", "English"), "en-US")
+    try:
+        scores = await asyncio.wait_for(asyncio.to_thread(
+            assess_pronunciation, state["audio_path"], state["transcript"], lang), timeout=30)
+    except Exception:
+        return {"degraded": ["pronunciation"]}
+    if "error" in scores:
+        return {"degraded": ["pronunciation"], "pronunciation": scores}
+    return {"pronunciation": scores}
+
+
+async def rag_node(state: dict) -> dict:
+    from agent.rag import retrieve
+    try:
+        docs = await asyncio.to_thread(retrieve, state["transcript"], 3)
+    except Exception:
+        docs = []
+    context = "\n\n".join(d.page_content for d in docs) or "(no context)"
+    sections = [d.metadata.get("section", "?") for d in docs]
+    try:
+        a = await structured_call("rag", RAG_SYSTEM.format(context=context),
+                                  state["transcript"], KnowledgeAnswer)
+        return {"answer": a.model_dump(), "retrieved_sections": sections}
+    except LLMUnavailable:
+        return {"degraded": ["rag"], "retrieved_sections": sections}

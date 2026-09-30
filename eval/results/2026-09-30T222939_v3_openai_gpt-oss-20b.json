@@ -1,0 +1,44 @@
+{
+ "variant": "v3",
+ "model": "openai/gpt-oss-20b",
+ "ts": "2026-09-30T22:29:39",
+ "router": {
+  "n": 50,
+  "failed": 0,
+  "accuracy": 0.94,
+  "question_prf": [
+   0.893,
+   1.0,
+   0.943
+  ],
+  "p50_ms": 320.1,
+  "p95_ms": 630.3,
+  "cost_per_1k_calls_usd": 0.0424,
+  "errors": [
+   {
+    "id": "r003",
+    "text": "Can you help me with my homework?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User is asking for help, not providing a sentence to check."
+   },
+   {
+    "id": "r013",
+    "text": "Wie spät ist es?",
+    "intent": "practice",
+    "lang": "German",
+    "pred": "question",
+    "raw": "The learner is asking about the meaning of a German phrase."
+   },
+   {
+    "id": "r019",
+    "text": "What do you think about the new teacher?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User is asking for an opinion, not about English language."
+   }
+  ]
+ }
+}

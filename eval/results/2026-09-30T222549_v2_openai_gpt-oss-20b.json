@@ -1,0 +1,246 @@
+{
+ "variant": "v2",
+ "model": "openai/gpt-oss-20b",
+ "ts": "2026-09-30T22:25:49",
+ "router": {
+  "n": 50,
+  "failed": 0,
+  "accuracy": 0.8,
+  "question_prf": [
+   0.714,
+   1.0,
+   0.833
+  ],
+  "p50_ms": 1933.9,
+  "p95_ms": 2510.6,
+  "cost_per_1k_calls_usd": 0.0347,
+  "errors": [
+   {
+    "id": "r003",
+    "text": "Can you help me with my homework?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User requests general help, not a specific sentence to check."
+   },
+   {
+    "id": "r007",
+    "text": "How are you today?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User is asking about language usage."
+   },
+   {
+    "id": "r009",
+    "text": "Why didn't you call me?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User is asking about language usage"
+   },
+   {
+    "id": "r010",
+    "text": "I think this is a good idea.",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "The input is a statement, not a practice sentence or a language question."
+   },
+   {
+    "id": "r013",
+    "text": "Wie spät ist es?",
+    "intent": "practice",
+    "lang": "German",
+    "pred": "question",
+    "raw": "User asks a language question about meaning."
+   },
+   {
+    "id": "r014",
+    "text": "Kannst du mich helfen?",
+    "intent": "practice",
+    "lang": "German",
+    "pred": "question",
+    "raw": "User is asking for help, not providing a sentence to check."
+   },
+   {
+    "id": "r017",
+    "text": "Wann fährt der nächste Bus?",
+    "intent": "practice",
+    "lang": "German",
+    "pred": "question",
+    "raw": "User asks about German grammar usage of question word."
+   },
+   {
+    "id": "r018",
+    "text": "Is it going to rain tomorrow?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User is asking about English usage."
+   },
+   {
+    "id": "r019",
+    "text": "What do you think about the new teacher?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User is asking about a topic, not providing a sentence to check."
+   },
+   {
+    "id": "r023",
+    "text": "How much does this cost?",
+    "intent": "practice",
+    "lang": "English",
+    "pred": "question",
+    "raw": "User is asking about a phrase, not providing a sentence to check."
+   }
+  ]
+ },
+ "grammar": {
+  "n": 79,
+  "failed": 0,
+  "detect_prf": [
+   0.909,
+   0.93,
+   0.92
+  ],
+  "false_alarm_rate": 0.111,
+  "by_lang": {
+   "English": [
+    0.935,
+    0.967,
+    0.951
+   ],
+   "German": [
+    0.846,
+    0.846,
+    0.846
+   ]
+  },
+  "p50_ms": 1978.1,
+  "p95_ms": 3095.0,
+  "cost_per_1k_calls_usd": 0.0555,
+  "errors": [
+   {
+    "id": "g001",
+    "lang": "English",
+    "text": "I have lived in Stuttgart since 2025.",
+    "has_error": false,
+    "gold_correction": null,
+    "error_types": [],
+    "pred": true,
+    "pred_correction": "I will have lived in Stuttgart since 2025.",
+    "pred_types": [
+     "tense"
+    ]
+   },
+   {
+    "id": "g013",
+    "lang": "English",
+    "text": "Everyone in the team has their own laptop.",
+    "has_error": false,
+    "gold_correction": null,
+    "error_types": [],
+    "pred": true,
+    "pred_correction": "Everyone in the team has his or her own laptop.",
+    "pred_types": [
+     "pronoun"
+    ]
+   },
+   {
+    "id": "g046",
+    "lang": "English",
+    "text": "I have been to Paris in 2019.",
+    "has_error": true,
+    "gold_correction": "I went to Paris in 2019.",
+    "error_types": [
+     "tense"
+    ],
+    "pred": false,
+    "pred_correction": "I have been to Paris in 2019.",
+    "pred_types": []
+   },
+   {
+    "id": "g062",
+    "lang": "German",
+    "text": "Ich habe keine Zeit, weil ich lernen muss.",
+    "has_error": false,
+    "gold_correction": null,
+    "error_types": [],
+    "pred": true,
+    "pred_correction": "Ich habe keine Zeit, weil ich muss lernen.",
+    "pred_types": [
+     "word_order"
+    ]
+   },
+   {
+    "id": "g070",
+    "lang": "German",
+    "text": "Ich wohne in Stuttgart seit zwei Jahren.",
+    "has_error": false,
+    "gold_correction": null,
+    "error_types": [],
+    "pred": true,
+    "pred_correction": "Ich wohne seit zwei Jahren in Stuttgart.",
+    "pred_types": [
+     "word_order"
+    ]
+   },
+   {
+    "id": "g071",
+    "lang": "German",
+    "text": "Er hat nach Berlin gefahren.",
+    "has_error": true,
+    "gold_correction": "Er ist nach Berlin gefahren.",
+    "error_types": [
+     "verb_form"
+    ],
+    "pred": false,
+    "pred_correction": "Er hat nach Berlin gefahren.",
+    "pred_types": []
+   },
+   {
+    "id": "g074",
+    "lang": "German",
+    "text": "Kannst du mich helfen?",
+    "has_error": true,
+    "gold_correction": "Kannst du mir helfen?",
+    "error_types": [
+     "gender_case"
+    ],
+    "pred": false,
+    "pred_correction": "Kannst du mich helfen?",
+    "pred_types": []
+   }
+  ]
+ },
+ "correction": {
+  "n": 40,
+  "exact_match": 0.9,
+  "judge_acceptable": 0.925,
+  "judge_failed": 0,
+  "judge_model": "openai/gpt-oss-120b",
+  "judge_calibration": {
+   "accepts_exact_matches": 1.0,
+   "rejects_uncorrected_input": 1.0
+  },
+  "rejected": [
+   {
+    "text": "She gave me many informations.",
+    "gold": "She gave me a lot of information.",
+    "pred": "She gave me many informations."
+   },
+   {
+    "text": "Ich habe gestern mit meine Freundin ins Kino gegangen.",
+    "gold": "Ich bin gestern mit meiner Freundin ins Kino gegangen.",
+    "pred": "Ich habe gestern mit meiner Freundin ins Kino gegangen."
+   },
+   {
+    "text": "Du bist größer als ich bin nicht.",
+    "gold": "Du bist nicht größer als ich.",
+    "pred": "Du bist größer als ich."
+   }
+  ]
+ }
+}

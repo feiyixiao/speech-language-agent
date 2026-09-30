@@ -1,11 +1,14 @@
-openai-whisper
-langchain
-langchain-groq
-langgraph
-langchain-community
-chromadb
-streamlit
-azure-cognitiveservices-speech
-sounddevice
-soundfile
-numpy
+# runtime (API + agent)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+groq>=0.30
+pydantic>=2.7
+python-dotenv>=1.0
+langgraph>=1.0
+langchain-core>=1.0
+langchain-community>=0.4
+langchain-text-splitters>=1.0
+langchain-huggingface>=1.0
+chromadb>=1.0
+python-multipart>=0.0.9
+azure-cognitiveservices-speech>=1.40

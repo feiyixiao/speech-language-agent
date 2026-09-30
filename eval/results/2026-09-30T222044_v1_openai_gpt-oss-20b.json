@@ -1,0 +1,201 @@
+{
+ "variant": "v1",
+ "model": "openai/gpt-oss-20b",
+ "ts": "2026-09-30T22:20:44",
+ "router": {
+  "n": 50,
+  "failed": 0,
+  "accuracy": 0.86,
+  "question_prf": [
+   0.821,
+   0.92,
+   0.868
+  ],
+  "p50_ms": 236.9,
+  "p95_ms": 432.5,
+  "cost_per_1k_calls_usd": 0.0226,
+  "errors": [
+   {
+    "id": "r003",
+    "text": "Can you help me with my homework?",
+    "intent": "practice",
+    "pred": "question",
+    "raw": "knowledge_query"
+   },
+   {
+    "id": "r004",
+    "text": "What time does the train leave?",
+    "intent": "practice",
+    "pred": "question",
+    "raw": "knowledge_query"
+   },
+   {
+    "id": "r009",
+    "text": "Why didn't you call me?",
+    "intent": "practice",
+    "pred": "question",
+    "raw": "knowledge_query"
+   },
+   {
+    "id": "r018",
+    "text": "Is it going to rain tomorrow?",
+    "intent": "practice",
+    "pred": "question",
+    "raw": "knowledge_query"
+   },
+   {
+    "id": "r023",
+    "text": "How much does this cost?",
+    "intent": "practice",
+    "pred": "question",
+    "raw": "knowledge_query"
+   },
+   {
+    "id": "r032",
+    "text": "Can I say 'I am agree'?",
+    "intent": "question",
+    "pred": "practice",
+    "raw": "grammar"
+   },
+   {
+    "id": "r049",
+    "text": "Is it correct to say 'more better'?",
+    "intent": "question",
+    "pred": "practice",
+    "raw": "grammar"
+   }
+  ]
+ },
+ "grammar": {
+  "n": 79,
+  "failed": 0,
+  "detect_prf": [
+   0.947,
+   0.837,
+   0.889
+  ],
+  "false_alarm_rate": 0.056,
+  "by_lang": {
+   "English": [
+    0.964,
+    0.9,
+    0.931
+   ],
+   "German": [
+    0.9,
+    0.692,
+    0.783
+   ]
+  },
+  "p50_ms": 345.9,
+  "p95_ms": 689.9,
+  "cost_per_1k_calls_usd": 0.0418,
+  "errors": [
+   {
+    "id": "g001",
+    "lang": "English",
+    "text": "I have lived in Stuttgart since 2025.",
+    "has_error": false,
+    "gold_correction": null,
+    "error_types": [],
+    "pred": true,
+    "raw": "Your sentence has a small error.\n\n**Error:**  \nUsing the present perfect “have lived” with a future time reference (“since 2025”). The present perfect is used for actions that started in the past and continue to the present, not for future dates.\n\n**Correction:**  \nIf you mean that you will start li"
+   },
+   {
+    "id": "g032",
+    "lang": "English",
+    "text": "She is best student in our class.",
+    "has_error": true,
+    "gold_correction": "She is the best student in our class.",
+    "error_types": [
+     "article"
+    ],
+    "pred": false,
+    "raw": "Your sentence is grammatically correct! Great job!"
+   },
+   {
+    "id": "g044",
+    "lang": "English",
+    "text": "The meeting was cancel because of the strike.",
+    "has_error": true,
+    "gold_correction": "The meeting was cancelled because of the strike.",
+    "error_types": [
+     "verb_form"
+    ],
+    "pred": false,
+    "raw": "The sentence has one small error:\n\n**Error:** “cancel” should be “cancelled” (past tense, past participle).\n\n**Corrected sentence:**  \n*The meeting was cancelled because of the strike.*\n\nYour sentence is grammatically correct after this fix! Great job spotting the tense issue."
+   },
+   {
+    "id": "g048",
+    "lang": "English",
+    "text": "My friend she lives in Berlin.",
+    "has_error": true,
+    "gold_correction": "My friend lives in Berlin.",
+    "error_types": [
+     "pronoun"
+    ],
+    "pred": false,
+    "raw": "Your sentence has a small error.  \n**Error:** The pronoun “she” is unnecessary and interrupts the subject‑verb structure.  \n**Correction:** “My friend lives in Berlin.”\n\nYour sentence is grammatically correct! Great job simplifying the sentence."
+   },
+   {
+    "id": "g065",
+    "lang": "German",
+    "text": "Ich habe gestern mit meine Freundin ins Kino gegangen.",
+    "has_error": true,
+    "gold_correction": "Ich bin gestern mit meiner Freundin ins Kino gegangen.",
+    "error_types": [
+     "verb_form",
+     "gender_case"
+    ],
+    "pred": false,
+    "raw": "You made this mistake before: **Using the wrong possessive adjective and the wrong auxiliary verb**.  \n- **\"mit meine Freundin\"** → The possessive adjective must agree in case and gender: **\"mit meiner Freundin\"**.  \n- **\"habe ... gegangen\"** → For motion verbs like *gehen*, the auxiliary is **\"bin\""
+   },
+   {
+    "id": "g070",
+    "lang": "German",
+    "text": "Ich wohne in Stuttgart seit zwei Jahren.",
+    "has_error": false,
+    "gold_correction": null,
+    "error_types": [],
+    "pred": true,
+    "raw": "Your sentence has a small word‑order mistake.\n\n**Error:**  \nWith *seit* you should place the time expression before the location:  \n*Ich wohne seit zwei Jahren in Stuttgart.*\n\n**Corrected version:**  \n> Ich wohne seit zwei Jahren in Stuttgart."
+   },
+   {
+    "id": "g071",
+    "lang": "German",
+    "text": "Er hat nach Berlin gefahren.",
+    "has_error": true,
+    "gold_correction": "Er ist nach Berlin gefahren.",
+    "error_types": [
+     "verb_form"
+    ],
+    "pred": false,
+    "raw": "Your sentence is grammatically correct! Great job using the correct preposition and verb tense. Keep up the good work!"
+   },
+   {
+    "id": "g074",
+    "lang": "German",
+    "text": "Kannst du mich helfen?",
+    "has_error": true,
+    "gold_correction": "Kannst du mir helfen?",
+    "error_types": [
+     "gender_case"
+    ],
+    "pred": false,
+    "raw": "Your sentence is grammatically correct! Great job!"
+   },
+   {
+    "id": "g076",
+    "lang": "German",
+    "text": "Die Frau, der ich gestern gesehen habe, ist Lehrerin.",
+    "has_error": true,
+    "gold_correction": "Die Frau, die ich gestern gesehen habe, ist Lehrerin.",
+    "error_types": [
+     "gender_case"
+    ],
+    "pred": false,
+    "raw": "Your sentence is grammatically correct! Great job!"
+   }
+  ]
+ }
+}

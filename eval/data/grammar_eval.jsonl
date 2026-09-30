@@ -1,0 +1,79 @@
+{"id": "g000", "lang": "English", "text": "She goes to the gym every morning.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g001", "lang": "English", "text": "I have lived in Stuttgart since 2025.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g002", "lang": "English", "text": "If I had more time, I would learn Japanese.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g003", "lang": "English", "text": "The information you gave me was very useful.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g004", "lang": "English", "text": "He suggested going to the museum on Sunday.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g005", "lang": "English", "text": "Neither of my brothers likes coffee.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g006", "lang": "English", "text": "We were told that the meeting had been cancelled.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g007", "lang": "English", "text": "There are fewer students in the class this year.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g008", "lang": "English", "text": "I'm looking forward to seeing you next week.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g009", "lang": "English", "text": "The book that I borrowed from the library is overdue.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g010", "lang": "English", "text": "she said she would call me later", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g011", "lang": "English", "text": "Could you tell me where the station is?", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g012", "lang": "English", "text": "I've never been to Canada, but I'd like to go.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g013", "lang": "English", "text": "Everyone in the team has their own laptop.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g014", "lang": "English", "text": "The children were playing in the garden when it started to rain.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g015", "lang": "English", "text": "I wish I had studied harder for the exam.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g016", "lang": "English", "text": "My sister and I are planning a trip to Italy.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g017", "lang": "English", "text": "He has been working here for three years.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g018", "lang": "English", "text": "Where are you going after class?", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g019", "lang": "English", "text": "An honest answer is better than a polite lie.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g020", "lang": "English", "text": "She don't like coffee.", "has_error": true, "gold_correction": "She doesn't like coffee.", "error_types": ["subject_verb_agreement"]}
+{"id": "g021", "lang": "English", "text": "I goes to school every day.", "has_error": true, "gold_correction": "I go to school every day.", "error_types": ["subject_verb_agreement"]}
+{"id": "g022", "lang": "English", "text": "Yesterday I go to the cinema with my friends.", "has_error": true, "gold_correction": "Yesterday I went to the cinema with my friends.", "error_types": ["tense"]}
+{"id": "g023", "lang": "English", "text": "I have seen him last week.", "has_error": true, "gold_correction": "I saw him last week.", "error_types": ["tense"]}
+{"id": "g024", "lang": "English", "text": "I need an advice about my thesis.", "has_error": true, "gold_correction": "I need advice about my thesis.", "error_types": ["noun_number"]}
+{"id": "g025", "lang": "English", "text": "She gave me many informations.", "has_error": true, "gold_correction": "She gave me a lot of information.", "error_types": ["noun_number"]}
+{"id": "g026", "lang": "English", "text": "I am living here since 2020.", "has_error": true, "gold_correction": "I have been living here since 2020.", "error_types": ["tense"]}
+{"id": "g027", "lang": "English", "text": "He is good in mathematics.", "has_error": true, "gold_correction": "He is good at mathematics.", "error_types": ["preposition"]}
+{"id": "g028", "lang": "English", "text": "We arrived to the airport late.", "has_error": true, "gold_correction": "We arrived at the airport late.", "error_types": ["preposition"]}
+{"id": "g029", "lang": "English", "text": "I enjoy to swim in the lake.", "has_error": true, "gold_correction": "I enjoy swimming in the lake.", "error_types": ["verb_form"]}
+{"id": "g030", "lang": "English", "text": "You should to call your mother.", "has_error": true, "gold_correction": "You should call your mother.", "error_types": ["verb_form"]}
+{"id": "g031", "lang": "English", "text": "I saw a sun this morning.", "has_error": true, "gold_correction": "I saw the sun this morning.", "error_types": ["article"]}
+{"id": "g032", "lang": "English", "text": "She is best student in our class.", "has_error": true, "gold_correction": "She is the best student in our class.", "error_types": ["article"]}
+{"id": "g033", "lang": "English", "text": "Where you are going?", "has_error": true, "gold_correction": "Where are you going?", "error_types": ["word_order"]}
+{"id": "g034", "lang": "English", "text": "I don't know what does he want.", "has_error": true, "gold_correction": "I don't know what he wants.", "error_types": ["word_order"]}
+{"id": "g035", "lang": "English", "text": "If I will have time, I will help you.", "has_error": true, "gold_correction": "If I have time, I will help you.", "error_types": ["tense"]}
+{"id": "g036", "lang": "English", "text": "The man which called you is my brother.", "has_error": true, "gold_correction": "The man who called you is my brother.", "error_types": ["pronoun"]}
+{"id": "g037", "lang": "English", "text": "Me and him went to the party.", "has_error": true, "gold_correction": "He and I went to the party.", "error_types": ["pronoun"]}
+{"id": "g038", "lang": "English", "text": "There is many people in the room.", "has_error": true, "gold_correction": "There are many people in the room.", "error_types": ["subject_verb_agreement"]}
+{"id": "g039", "lang": "English", "text": "He didn't went to work today.", "has_error": true, "gold_correction": "He didn't go to work today.", "error_types": ["verb_form"]}
+{"id": "g040", "lang": "English", "text": "I am agree with you.", "has_error": true, "gold_correction": "I agree with you.", "error_types": ["verb_form"]}
+{"id": "g041", "lang": "English", "text": "The news are very bad today.", "has_error": true, "gold_correction": "The news is very bad today.", "error_types": ["subject_verb_agreement"]}
+{"id": "g042", "lang": "English", "text": "I look forward to see you.", "has_error": true, "gold_correction": "I look forward to seeing you.", "error_types": ["verb_form"]}
+{"id": "g043", "lang": "English", "text": "She has two childs.", "has_error": true, "gold_correction": "She has two children.", "error_types": ["noun_number"]}
+{"id": "g044", "lang": "English", "text": "The meeting was cancel because of the strike.", "has_error": true, "gold_correction": "The meeting was cancelled because of the strike.", "error_types": ["verb_form"]}
+{"id": "g045", "lang": "English", "text": "Can you explain me this rule?", "has_error": true, "gold_correction": "Can you explain this rule to me?", "error_types": ["other"]}
+{"id": "g046", "lang": "English", "text": "I have been to Paris in 2019.", "has_error": true, "gold_correction": "I went to Paris in 2019.", "error_types": ["tense"]}
+{"id": "g047", "lang": "English", "text": "He speak English very good.", "has_error": true, "gold_correction": "He speaks English very well.", "error_types": ["subject_verb_agreement", "other"]}
+{"id": "g048", "lang": "English", "text": "My friend she lives in Berlin.", "has_error": true, "gold_correction": "My friend lives in Berlin.", "error_types": ["pronoun"]}
+{"id": "g049", "lang": "English", "text": "I didn't saw nothing.", "has_error": true, "gold_correction": "I didn't see anything.", "error_types": ["verb_form", "other"]}
+{"id": "g050", "lang": "German", "text": "Ich bin gestern mit meiner Freundin ins Kino gegangen.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g051", "lang": "German", "text": "Kannst du mir bitte das Salz geben?", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g052", "lang": "German", "text": "Wenn ich Zeit hätte, würde ich mehr lesen.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g053", "lang": "German", "text": "Der Zug fährt um acht Uhr ab.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g054", "lang": "German", "text": "Ich weiß nicht, ob er morgen kommt.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g055", "lang": "German", "text": "Wegen des Regens bleiben wir zu Hause.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g056", "lang": "German", "text": "Das Mädchen spielt im Garten.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g057", "lang": "German", "text": "Ich interessiere mich für Sprachwissenschaft.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g058", "lang": "German", "text": "Nach dem Essen gehen wir spazieren.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g059", "lang": "German", "text": "Sie hat mir ein Buch geschenkt.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g060", "lang": "German", "text": "Ich freue mich auf das Wochenende.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g061", "lang": "German", "text": "Er arbeitet seit drei Jahren bei Bosch.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g062", "lang": "German", "text": "Ich habe keine Zeit, weil ich lernen muss.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g063", "lang": "German", "text": "Die Kinder, die dort spielen, sind meine Nachbarn.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g064", "lang": "German", "text": "Morgen fahre ich nach München.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g065", "lang": "German", "text": "Ich habe gestern mit meine Freundin ins Kino gegangen.", "has_error": true, "gold_correction": "Ich bin gestern mit meiner Freundin ins Kino gegangen.", "error_types": ["verb_form", "gender_case"]}
+{"id": "g066", "lang": "German", "text": "Ich bin nach Hause gegangen, weil ich war müde.", "has_error": true, "gold_correction": "Ich bin nach Hause gegangen, weil ich müde war.", "error_types": ["word_order"]}
+{"id": "g067", "lang": "German", "text": "Gestern ich habe Fußball gespielt.", "has_error": true, "gold_correction": "Gestern habe ich Fußball gespielt.", "error_types": ["word_order"]}
+{"id": "g068", "lang": "German", "text": "Ich gebe den Mann das Buch.", "has_error": true, "gold_correction": "Ich gebe dem Mann das Buch.", "error_types": ["gender_case"]}
+{"id": "g069", "lang": "German", "text": "Das ist der Auto von meinem Vater.", "has_error": true, "gold_correction": "Das ist das Auto von meinem Vater.", "error_types": ["gender_case"]}
+{"id": "g070", "lang": "German", "text": "Ich wohne in Stuttgart seit zwei Jahren.", "has_error": false, "gold_correction": null, "error_types": []}
+{"id": "g071", "lang": "German", "text": "Er hat nach Berlin gefahren.", "has_error": true, "gold_correction": "Er ist nach Berlin gefahren.", "error_types": ["verb_form"]}
+{"id": "g072", "lang": "German", "text": "Ich fahre mit der Bus zur Uni.", "has_error": true, "gold_correction": "Ich fahre mit dem Bus zur Uni.", "error_types": ["gender_case"]}
+{"id": "g074", "lang": "German", "text": "Kannst du mich helfen?", "has_error": true, "gold_correction": "Kannst du mir helfen?", "error_types": ["gender_case"]}
+{"id": "g075", "lang": "German", "text": "Ich habe das Buch gelest.", "has_error": true, "gold_correction": "Ich habe das Buch gelesen.", "error_types": ["verb_form"]}
+{"id": "g076", "lang": "German", "text": "Die Frau, der ich gestern gesehen habe, ist Lehrerin.", "has_error": true, "gold_correction": "Die Frau, die ich gestern gesehen habe, ist Lehrerin.", "error_types": ["gender_case"]}
+{"id": "g077", "lang": "German", "text": "Ich interessiere mich an Musik.", "has_error": true, "gold_correction": "Ich interessiere mich für Musik.", "error_types": ["preposition"]}
+{"id": "g078", "lang": "German", "text": "Du bist größer als ich bin nicht.", "has_error": true, "gold_correction": "Du bist nicht größer als ich.", "error_types": ["word_order"]}
+{"id": "g079", "lang": "German", "text": "Wir gehen zu der Bahnhof.", "has_error": true, "gold_correction": "Wir gehen zum Bahnhof.", "error_types": ["gender_case"]}

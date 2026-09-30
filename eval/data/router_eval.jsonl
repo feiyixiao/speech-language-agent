@@ -1,0 +1,50 @@
+{"id": "r000", "text": "She don't like coffee.", "intent": "practice", "lang": "English"}
+{"id": "r001", "text": "I goes to school every day.", "intent": "practice", "lang": "English"}
+{"id": "r002", "text": "Where you are going?", "intent": "practice", "lang": "English"}
+{"id": "r003", "text": "Can you help me with my homework?", "intent": "practice", "lang": "English"}
+{"id": "r004", "text": "What time does the train leave?", "intent": "practice", "lang": "English"}
+{"id": "r005", "text": "I have lived here since two years.", "intent": "practice", "lang": "English"}
+{"id": "r006", "text": "Yesterday I went to the market and bought apples.", "intent": "practice", "lang": "English"}
+{"id": "r007", "text": "How are you today?", "intent": "practice", "lang": "English"}
+{"id": "r008", "text": "Do you want to come with us?", "intent": "practice", "lang": "English"}
+{"id": "r009", "text": "Why didn't you call me?", "intent": "practice", "lang": "English"}
+{"id": "r010", "text": "I think this is a good idea.", "intent": "practice", "lang": "English"}
+{"id": "r011", "text": "My favourite food is pasta.", "intent": "practice", "lang": "English"}
+{"id": "r012", "text": "Ich habe gestern Fußball gespielt.", "intent": "practice", "lang": "German"}
+{"id": "r013", "text": "Wie spät ist es?", "intent": "practice", "lang": "German"}
+{"id": "r014", "text": "Kannst du mich helfen?", "intent": "practice", "lang": "German"}
+{"id": "r015", "text": "Warum bist du so spät gekommen?", "intent": "practice", "lang": "German"}
+{"id": "r016", "text": "Ich wohne seit drei Jahren in Stuttgart.", "intent": "practice", "lang": "German"}
+{"id": "r017", "text": "Wann fährt der nächste Bus?", "intent": "practice", "lang": "German"}
+{"id": "r018", "text": "Is it going to rain tomorrow?", "intent": "practice", "lang": "English"}
+{"id": "r019", "text": "What do you think about the new teacher?", "intent": "practice", "lang": "English"}
+{"id": "r020", "text": "I would like to order a coffee, please.", "intent": "practice", "lang": "English"}
+{"id": "r021", "text": "He speak English very good.", "intent": "practice", "lang": "English"}
+{"id": "r022", "text": "Wo ist der Bahnhof?", "intent": "practice", "lang": "German"}
+{"id": "r023", "text": "How much does this cost?", "intent": "practice", "lang": "English"}
+{"id": "r024", "text": "Ich möchte ein Zimmer reservieren.", "intent": "practice", "lang": "German"}
+{"id": "r025", "text": "When do I use the present perfect?", "intent": "question", "lang": "English"}
+{"id": "r026", "text": "What is the difference between 'since' and 'for'?", "intent": "question", "lang": "English"}
+{"id": "r027", "text": "How do you pronounce 'th'?", "intent": "question", "lang": "English"}
+{"id": "r028", "text": "Is it 'a university' or 'an university'?", "intent": "question", "lang": "English"}
+{"id": "r029", "text": "Why do we say 'on Monday' but 'in June'?", "intent": "question", "lang": "English"}
+{"id": "r030", "text": "What does 'look forward to' mean?", "intent": "question", "lang": "English"}
+{"id": "r031", "text": "When should I use 'who' and when 'which'?", "intent": "question", "lang": "English"}
+{"id": "r032", "text": "Can I say 'I am agree'?", "intent": "question", "lang": "English"}
+{"id": "r033", "text": "How do I form the passive voice?", "intent": "question", "lang": "English"}
+{"id": "r034", "text": "What's the plural of 'child'?", "intent": "question", "lang": "English"}
+{"id": "r035", "text": "Wann benutzt man den Dativ?", "intent": "question", "lang": "German"}
+{"id": "r036", "text": "Was ist der Unterschied zwischen 'seit' und 'vor'?", "intent": "question", "lang": "German"}
+{"id": "r037", "text": "Wie spricht man 'ch' aus?", "intent": "question", "lang": "German"}
+{"id": "r038", "text": "Heißt es 'der' oder 'das' Auto?", "intent": "question", "lang": "German"}
+{"id": "r039", "text": "Warum steht das Verb im Nebensatz am Ende?", "intent": "question", "lang": "German"}
+{"id": "r040", "text": "When do I use Konjunktiv II in German?", "intent": "question", "lang": "English"}
+{"id": "r041", "text": "Is 'information' countable?", "intent": "question", "lang": "English"}
+{"id": "r042", "text": "How do I pronounce 'Brötchen'?", "intent": "question", "lang": "English"}
+{"id": "r043", "text": "Which prepositions take the dative in German?", "intent": "question", "lang": "English"}
+{"id": "r044", "text": "Should I use 'bin' or 'habe' with 'gegangen'?", "intent": "question", "lang": "English"}
+{"id": "r045", "text": "What's the difference between 'make' and 'do'?", "intent": "question", "lang": "English"}
+{"id": "r046", "text": "Is 'childs' a correct plural?", "intent": "question", "lang": "English"}
+{"id": "r047", "text": "Explain the difference between past simple and present perfect.", "intent": "question", "lang": "English"}
+{"id": "r048", "text": "Welche Endung hat das Adjektiv nach 'ein'?", "intent": "question", "lang": "German"}
+{"id": "r049", "text": "Is it correct to say 'more better'?", "intent": "question", "lang": "English"}
