@@ -1,0 +1,11 @@
+openai-whisper
+langchain
+langchain-groq
+langgraph
+langchain-community
+chromadb
+streamlit
+azure-cognitiveservices-speech
+sounddevice
+soundfile
+numpy
