@@ -3,10 +3,12 @@ degrades (records itself in `degraded`) instead of failing the whole request."""
 import asyncio
 import re
 
+from agent.confidence import CONF_SUFFIX, consistency_score
 from agent.config import settings
 from agent.llm import LLMUnavailable, structured_call
-from agent.schemas import (GrammarFeedback, KnowledgeAnswer, RouterDecision,
-                           VocabFeedback)
+from agent.schemas import (GrammarFeedback, GrammarFeedbackConf, GrammarResult, KnowledgeAnswer,
+                           RouterDecision, VocabFeedback)
+from agent.textmetrics import wer
 
 # v3 router (eval/RESULTS.md): v2 sent everyday questions written in the target
 # language ("Kannst du mich helfen?") to the knowledge branch — INCIDENTS.md #2.
@@ -61,20 +63,55 @@ async def router_node(state: dict) -> dict:
         return {"intent": heuristic_intent(state["transcript"]), "degraded": ["router"]}
 
 
+async def _consistency(system: str, text: str) -> float | None:
+    """Closed loop 1, signal B: share of k sampled runs that also report an error."""
+    runs = await asyncio.gather(*(
+        structured_call("grammar_sample", system, text, GrammarFeedback,
+                        temperature=settings.grammar_conf_temperature)
+        for _ in range(settings.grammar_conf_k)), return_exceptions=True)
+    return consistency_score([bool(r.errors) if isinstance(r, GrammarFeedback) else None for r in runs])
+
+
 async def grammar_node(state: dict) -> dict:
+    """Grammar feedback with an optional confidence gate (GRAMMAR_CONF_MODE, off by default).
+
+    A flagged error is SUPPRESSED (kept in suppressed_errors, not shown, not added to the error
+    history) when its confidence is below GRAMMAR_CONF_THRESHOLD, or when the ASR transcript
+    itself is uncertain (closed loop 2). Nothing is suppressed when the gate is off."""
     lang = state.get("target_language", "English")
+    mode = settings.grammar_conf_mode
+    system = GRAMMAR_SYSTEM.format(lang=lang) + (CONF_SUFFIX if mode == "verbalized" else "")
     try:
-        g = await structured_call("grammar", GRAMMAR_SYSTEM.format(lang=lang),
-                                  state["transcript"], GrammarFeedback)
+        g = await structured_call("grammar", system, state["transcript"],
+                                  GrammarFeedbackConf if mode == "verbalized" else GrammarFeedback)
     except LLMUnavailable:
         return {"degraded": ["grammar"]}
     # keep the flag and the list consistent — models sometimes disagree with themselves
     g.has_error = bool(g.errors)
+    degraded = []
+    conf = None
+    if g.has_error and mode == "verbalized":
+        conf = g.confidence
+    elif g.has_error and mode == "consistency":
+        conf = await _consistency(system, state["transcript"])
+        if conf is None:
+            degraded.append("grammar_confidence")
+    below = (conf is not None and settings.grammar_conf_threshold is not None
+             and conf < settings.grammar_conf_threshold)
+    uncertain = g.has_error and (below or bool(state.get("transcript_uncertain")))
+    out = GrammarResult(**g.model_dump(exclude={"confidence"}), confidence=conf, confidence_mode=mode,
+                        uncertain=uncertain)
+    if uncertain:
+        out.suppressed_errors, out.errors = g.errors, []
+        out.has_error, out.corrected_sentence = False, state["transcript"]
     history = list(state.get("error_history", []))
-    types = sorted({e.error_type for e in g.errors})
+    types = sorted({e.error_type for e in out.errors})
     repeated = [t for t in types if t in history]
-    return {"grammar": g.model_dump(), "repeated_error_types": repeated,
-            "error_history": history + [t for t in types if t not in history]}
+    res = {"grammar": out.model_dump(), "repeated_error_types": repeated,
+           "error_history": history + [t for t in types if t not in history]}
+    if degraded:
+        res["degraded"] = degraded
+    return res
 
 
 async def vocabulary_node(state: dict) -> dict:
@@ -104,6 +141,10 @@ async def pronunciation_node(state: dict) -> dict:
         return {"degraded": ["pronunciation"]}
     if "error" in scores:
         return {"degraded": ["pronunciation"], "pronunciation": scores}
+    # The reference text for Azure is the Whisper transcript, so a word Whisper "corrected" would be
+    # scored against the corrected word. Surface how much the two recognisers disagree.
+    if scores.get("recognized_text") is not None:
+        scores["reference_mismatch_wer"] = round(wer(state["transcript"], scores["recognized_text"]), 3)
     return {"pronunciation": scores}
 
 

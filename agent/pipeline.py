@@ -6,10 +6,15 @@ from agent.schemas import FeedbackResult
 from agent.tracing import current_trace_id, trace
 
 
-def _initial(transcript, target_language, audio_path, error_history) -> dict:
-    return {"transcript": transcript, "target_language": target_language,
-            "audio_path": audio_path or "", "error_history": list(error_history or []),
-            "degraded": []}
+def _initial(transcript, target_language, audio_path, error_history, asr=None) -> dict:
+    state = {"transcript": transcript, "target_language": target_language,
+             "audio_path": audio_path or "", "error_history": list(error_history or []),
+             "degraded": []}
+    if asr:  # {"score": float|None, "uncertain": bool} from agent.asr_conf.gate
+        if asr.get("score") is not None:
+            state["transcript_confidence"] = asr["score"]
+        state["transcript_uncertain"] = bool(asr.get("uncertain"))
+    return state
 
 
 def _to_result(state: dict) -> FeedbackResult:
@@ -20,9 +25,10 @@ def _to_result(state: dict) -> FeedbackResult:
 
 async def run_feedback(transcript: str, target_language: str = "English",
                        audio_path: str | None = None,
-                       error_history: list[str] | None = None) -> FeedbackResult:
+                       error_history: list[str] | None = None,
+                       asr: dict | None = None) -> FeedbackResult:
     with trace("feedback", target_language=target_language, has_audio=bool(audio_path)) as t:
-        state = await graph.ainvoke(_initial(transcript, target_language, audio_path, error_history))
+        state = await graph.ainvoke(_initial(transcript, target_language, audio_path, error_history, asr))
         result = _to_result(state)
         t["attrs"].update(intent=result.intent, degraded=result.degraded)
         return result
@@ -30,10 +36,11 @@ async def run_feedback(transcript: str, target_language: str = "English",
 
 async def stream_feedback(transcript: str, target_language: str = "English",
                           audio_path: str | None = None,
-                          error_history: list[str] | None = None) -> AsyncIterator[tuple[str, dict]]:
+                          error_history: list[str] | None = None,
+                          asr: dict | None = None) -> AsyncIterator[tuple[str, dict]]:
     """Yield (node_name, node_output) as each node finishes, then ("done", full_result)."""
     with trace("feedback_stream", target_language=target_language, has_audio=bool(audio_path)) as t:
-        state = _initial(transcript, target_language, audio_path, error_history)
+        state = _initial(transcript, target_language, audio_path, error_history, asr)
         async for update in graph.astream(state, stream_mode="updates"):
             for node, out in update.items():
                 out = out or {}

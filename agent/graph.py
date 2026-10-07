@@ -30,6 +30,8 @@ class AgentState(TypedDict, total=False):
     pronunciation: dict
     answer: dict
     retrieved_sections: list[str]
+    transcript_confidence: float
+    transcript_uncertain: bool
     degraded: Annotated[list[str], operator.add]  # parallel nodes may all append
 
 

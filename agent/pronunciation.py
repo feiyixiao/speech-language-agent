@@ -44,7 +44,9 @@ def assess_pronunciation(audio_path: str, reference_text: str, language: str = "
             "fluency_score": round(assessment.fluency_score, 1),
             "completeness_score": round(assessment.completeness_score, 1),
             "pronunciation_score": round(assessment.pronunciation_score, 1),
-            "words": words
+            "words": words,
+            # what Azure itself heard; compared with the Whisper transcript in nodes.pronunciation_node
+            "recognized_text": result.text,
         }
     else:
         return {"error": f"Recognition failed: {result.reason}"}

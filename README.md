@@ -66,7 +66,7 @@ cp .env.example .env               # GROQ_API_KEY (+ AZURE_SPEECH_KEY / REGION f
 pip install -r requirements-dev.txt
 uvicorn api.main:app --reload      # API on :8000, docs at /docs
 streamlit run ui/app.py            # demo UI
-pytest -q                          # 14 tests, no network
+pytest -q                          # 36 tests, no network
 python -m eval.run_eval --variants v1 v3   # needs GROQ_API_KEY; ~15 min on the free tier
 python scripts/trace_report.py     # summarise traces/
 ```
@@ -84,6 +84,20 @@ gcloud run deploy speech-agent --source . --region europe-west3 --memory 2Gi \
   --set-secrets GROQ_API_KEY=groq-api-key:latest,AZURE_SPEECH_KEY=azure-speech-key:latest \
   --set-env-vars AZURE_SPEECH_REGION=westeurope
 ```
+
+## Closed loops: confidence-gated feedback (code ready, real results pending)
+
+Two measure -> gate -> held-out test loops, both OFF by default. Protocol written before any run: [eval/PROTOCOL.md](eval/PROTOCOL.md).
+
+- **Grammar.** False alarms doubled when recall went up, so a flagged error can now be gated on a confidence score
+  (`GRAMMAR_CONF_MODE=verbalized|consistency`, `GRAMMAR_CONF_THRESHOLD`). Suppressed errors stay in `suppressed_errors`.
+  `python -m eval.conf_eval collect | analyze | analyze --final` on the dev/test split in `eval/data/grammar_split.json`.
+- **Speech.** Whisper may "autocorrect" a learner's mistake before the grammar node sees it, and Azure is scored against the
+  Whisper transcript. `/v1/feedback/audio` now returns `transcript_confidence` / `transcript_uncertain`
+  (`ASR_CONF_FEATURE`, `ASR_CONF_THRESHOLD`), the pronunciation node reports `reference_mismatch_wer`, and
+  `python -m eval.speech_eval` measures both on recordings of your own voice (`eval/audio/README.md`).
+
+No numbers from these loops are in this README or RESULTS.md yet: they are added by the scripts when the real runs are done.
 
 ## Known limitations / next
 

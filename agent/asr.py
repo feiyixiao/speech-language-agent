@@ -3,6 +3,7 @@ cold starts fast — local whisper pulls in torch). Local openai-whisper is the
 fallback when the API fails or ASR_PROVIDER=local."""
 import time
 
+from agent.asr_conf import asr_features
 from agent.config import settings
 from agent.tracing import record_span
 
@@ -15,7 +16,8 @@ def _local(audio_path: str) -> dict:
     if _local_model is None:
         _local_model = whisper.load_model("base")
     r = _local_model.transcribe(audio_path)
-    return {"text": r["text"].strip(), "language": r["language"], "provider": "local-whisper-base"}
+    return {"text": r["text"].strip(), "language": r["language"], "provider": "local-whisper-base",
+            "features": asr_features(r.get("segments"))}
 
 
 def _groq(audio_path: str) -> dict:
@@ -25,11 +27,12 @@ def _groq(audio_path: str) -> dict:
         r = client.audio.transcriptions.create(file=f, model=settings.asr_model,
                                                response_format="verbose_json")
     return {"text": r.text.strip(), "language": getattr(r, "language", None),
-            "provider": f"groq/{settings.asr_model}"}
+            "provider": f"groq/{settings.asr_model}",
+            "features": asr_features(getattr(r, "segments", None))}
 
 
 def transcribe_file(audio_path: str) -> dict:
-    """Returns {text, language, provider}."""
+    """Returns {text, language, provider, features}. features = agent.asr_conf scores ({} if unavailable)."""
     order = [_groq, _local] if settings.asr_provider == "groq" else [_local]
     last = None
     for i, fn in enumerate(order):

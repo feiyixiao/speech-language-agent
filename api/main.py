@@ -17,6 +17,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from agent.asr import transcribe_file
+from agent.asr_conf import gate as asr_gate
 from agent.config import settings
 from agent.llm import get_client
 from agent.pipeline import run_feedback, stream_feedback
@@ -96,7 +97,10 @@ async def feedback_audio(file: UploadFile = File(...), target_language: str = Fo
             raise HTTPException(502, f"transcription failed: {e}")
         if not asr["text"]:
             raise HTTPException(422, "no speech detected")
-        r = await run_feedback(asr["text"], target_language, path, json.loads(error_history))
+        score, uncertain = asr_gate(asr.get("features") or {}, settings.asr_conf_feature,
+                                    settings.asr_conf_threshold)
+        r = await run_feedback(asr["text"], target_language, path, json.loads(error_history),
+                               asr={"score": score, "uncertain": uncertain})
         return _check_not_all_down(r)
     finally:
         os.unlink(path)

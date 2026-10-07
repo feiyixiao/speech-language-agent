@@ -6,3 +6,7 @@ data/chroma_db/
 traces/
 .pytest_cache/
 .venv/
+# recordings contain your voice: keep them out of git
+eval/audio/*
+!eval/audio/READING_SHEET.md
+!eval/audio/README.md

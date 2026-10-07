@@ -35,6 +35,21 @@ class GrammarFeedback(BaseModel):
     corrected_sentence: str
 
 
+class GrammarFeedbackConf(GrammarFeedback):
+    """LLM contract for the verbalized-confidence variant (closed loop 1)."""
+    confidence: float = Field(ge=0.0, le=1.0, description="probability that the verdict is correct")
+
+
+class GrammarResult(GrammarFeedback):
+    """What the API returns for grammar: the model's verdict plus the confidence gate's decision.
+    When uncertain=True the errors were NOT shown; they are kept in suppressed_errors so the
+    decision stays auditable."""
+    confidence: float | None = None
+    confidence_mode: str = "off"
+    uncertain: bool = False
+    suppressed_errors: list[GrammarError] = Field(default_factory=list)
+
+
 class VocabSuggestion(BaseModel):
     original: str
     better: str
@@ -55,7 +70,9 @@ class FeedbackResult(BaseModel):
     trace_id: str | None = None
     intent: str
     transcript: str
-    grammar: GrammarFeedback | None = None
+    grammar: GrammarResult | None = None
+    transcript_confidence: float | None = Field(default=None, description="ASR confidence score, higher = more confident")
+    transcript_uncertain: bool = False
     repeated_error_types: list[str] = Field(default_factory=list)
     vocabulary: VocabFeedback | None = None
     pronunciation: dict | None = None
