@@ -205,6 +205,7 @@ def main():
     c.add_argument("--model", default="openai/gpt-oss-20b")
     c.add_argument("--k", type=int, default=5)
     c.add_argument("--temperature", type=float, default=0.7)
+    c.add_argument("--limit", type=int, help="smoke test: only the first N sentences (do NOT analyze this file)")
     a = sub.add_parser("analyze")
     a.add_argument("--raw", required=True)
     a.add_argument("--final", action="store_true", help="evaluate the TEST split (allowed once)")
@@ -214,8 +215,9 @@ def main():
     args = ap.parse_args()
     (HERE / "results").mkdir(exist_ok=True)
     if args.cmd == "collect":
-        raw = asyncio.run(collect(load_items(), args.model, args.k, args.temperature))
-        path = HERE / "results" / f"conf_raw_{raw['meta']['ts'].replace(':', '')}.json"
+        raw = asyncio.run(collect(load_items()[:args.limit], args.model, args.k, args.temperature))
+        name = "conf_smoke" if args.limit else "conf_raw"
+        path = HERE / "results" / f"{name}_{raw['meta']['ts'].replace(':', '')}.json"
         path.write_text(json.dumps(raw, ensure_ascii=False, indent=1))
         print("saved", path)
         return
