@@ -1,0 +1,67 @@
+starting server (first start loads the embedding model, about 10 to 20 s)...
+
+========================================================================
+[1] Readiness: does every configured model answer?
+========================================================================
+{
+  "status": "ok",
+  "models": {
+    "openai/gpt-oss-20b": "ok",
+    "qwen/qwen3.8-27b": "ok",
+    "openai/gpt-oss-120b": "ok"
+  }
+}
+
+========================================================================
+[2] Practice sentence with a word-order error (German)
+========================================================================
+intent: practice   degraded: none   trace_id: d8e0edf7251f
+  grammar : 'Gestern ich habe Fußball gespielt.' -> 'Gestern habe ich Fußball gespielt.'  [word_order]
+            In German, the verb comes before the subject in main clauses, so it should be "Gestern habe ich Fußball gespielt."
+  vocab   : 'Gestern ich habe Fußball gespielt.' -> 'Gestern habe ich Fußball gespielt.'
+  (1137 ms end to end)
+
+========================================================================
+[3] A question about the language goes to the RAG branch
+========================================================================
+intent: question   degraded: none   trace_id: d63991e4e60f
+  answer  : Use the present perfect for actions that have a connection to the present, such as experiences or results that affect the current situation. For example, "I have visited Paris" indicates you visited at some point in your life and it may sti
+  grounded: True   retrieved: ['Past Simple vs Present Perfect', 'Conditional Sentences', 'Passive Voice']
+  (1012 ms end to end)
+
+========================================================================
+[4] A correct sentence: no invented errors
+========================================================================
+intent: practice   degraded: none   trace_id: 814c1ce04d4a
+  grammar : no error found
+  (703 ms end to end)
+
+========================================================================
+[5] Streaming: one event per finished node
+========================================================================
+  +  482 ms  event=router      practice
+  +  886 ms  event=vocabulary  vocabulary
+  + 1342 ms  event=grammar     grammar, repeated_error_types, error_history
+  + 1342 ms  event=done        practice
+
+========================================================================
+[6] Per-request traces of this run: latency, fallbacks, cost
+========================================================================
+requests: 4   errors: 0.0%   degraded: 0.0%   fallback used: 0.0%
+latency p50/p95/max: 1133 / 1341 / 1341 ms   cost/request: $0.000138
+intents: {'practice': 3, 'question': 1}
+
+node / model                               calls  fail%  p50ms  p95ms
+grammar      openai/gpt-oss-20b                 3   0.0%    834    858
+rag          openai/gpt-oss-20b                 1   0.0%    543    543
+router       openai/gpt-oss-20b                 4   0.0%    388    478
+vocabulary   openai/gpt-oss-20b                 3   0.0%    351    400
+
+========================================================================
+[7] Known weakness, shown on purpose: German dative error (should be 'mir')
+========================================================================
+intent: practice   degraded: none   trace_id: c8a219633499
+  grammar : no error found
+  (464 ms end to end)
+
+Done.

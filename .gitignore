@@ -10,3 +10,7 @@ traces/
 eval/audio/*
 !eval/audio/READING_SHEET.md
 !eval/audio/README.md
+
+# demo run artefacts
+demo/traces/
+demo/server.log

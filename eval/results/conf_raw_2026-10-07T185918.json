@@ -1,0 +1,1573 @@
+{
+ "meta": {
+  "model": "openai/gpt-oss-20b",
+  "k": 5,
+  "temperature": 0.7,
+  "ts": "2026-10-07T18:59:18"
+ },
+ "items": {
+  "g000": {
+   "split": "test",
+   "lang": "English",
+   "text": "She goes to the gym every morning.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g001": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I have lived in Stuttgart since 2025.",
+   "has_error": false,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g002": {
+   "split": "dev",
+   "lang": "English",
+   "text": "If I had more time, I would learn Japanese.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g003": {
+   "split": "dev",
+   "lang": "English",
+   "text": "The information you gave me was very useful.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g004": {
+   "split": "dev",
+   "lang": "English",
+   "text": "He suggested going to the museum on Sunday.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g005": {
+   "split": "test",
+   "lang": "English",
+   "text": "Neither of my brothers likes coffee.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g006": {
+   "split": "test",
+   "lang": "English",
+   "text": "We were told that the meeting had been cancelled.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g007": {
+   "split": "dev",
+   "lang": "English",
+   "text": "There are fewer students in the class this year.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g008": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I'm looking forward to seeing you next week.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g009": {
+   "split": "dev",
+   "lang": "English",
+   "text": "The book that I borrowed from the library is overdue.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g010": {
+   "split": "test",
+   "lang": "English",
+   "text": "she said she would call me later",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g011": {
+   "split": "dev",
+   "lang": "English",
+   "text": "Could you tell me where the station is?",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g012": {
+   "split": "test",
+   "lang": "English",
+   "text": "I've never been to Canada, but I'd like to go.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g013": {
+   "split": "dev",
+   "lang": "English",
+   "text": "Everyone in the team has their own laptop.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    true,
+    false,
+    true
+   ]
+  },
+  "g014": {
+   "split": "test",
+   "lang": "English",
+   "text": "The children were playing in the garden when it started to rain.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g015": {
+   "split": "test",
+   "lang": "English",
+   "text": "I wish I had studied harder for the exam.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g016": {
+   "split": "dev",
+   "lang": "English",
+   "text": "My sister and I are planning a trip to Italy.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g017": {
+   "split": "dev",
+   "lang": "English",
+   "text": "He has been working here for three years.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g018": {
+   "split": "dev",
+   "lang": "English",
+   "text": "Where are you going after class?",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g019": {
+   "split": "dev",
+   "lang": "English",
+   "text": "An honest answer is better than a polite lie.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g020": {
+   "split": "dev",
+   "lang": "English",
+   "text": "She don't like coffee.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g021": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I goes to school every day.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g022": {
+   "split": "test",
+   "lang": "English",
+   "text": "Yesterday I go to the cinema with my friends.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g023": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I have seen him last week.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g024": {
+   "split": "test",
+   "lang": "English",
+   "text": "I need an advice about my thesis.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g025": {
+   "split": "dev",
+   "lang": "English",
+   "text": "She gave me many informations.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g026": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I am living here since 2020.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g027": {
+   "split": "dev",
+   "lang": "English",
+   "text": "He is good in mathematics.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g028": {
+   "split": "dev",
+   "lang": "English",
+   "text": "We arrived to the airport late.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g029": {
+   "split": "test",
+   "lang": "English",
+   "text": "I enjoy to swim in the lake.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g030": {
+   "split": "dev",
+   "lang": "English",
+   "text": "You should to call your mother.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g031": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I saw a sun this morning.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    false
+   ]
+  },
+  "g032": {
+   "split": "test",
+   "lang": "English",
+   "text": "She is best student in our class.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g033": {
+   "split": "dev",
+   "lang": "English",
+   "text": "Where you are going?",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g034": {
+   "split": "test",
+   "lang": "English",
+   "text": "I don't know what does he want.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g035": {
+   "split": "dev",
+   "lang": "English",
+   "text": "If I will have time, I will help you.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    false,
+    true
+   ]
+  },
+  "g036": {
+   "split": "test",
+   "lang": "English",
+   "text": "The man which called you is my brother.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g037": {
+   "split": "dev",
+   "lang": "English",
+   "text": "Me and him went to the party.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g038": {
+   "split": "dev",
+   "lang": "English",
+   "text": "There is many people in the room.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g039": {
+   "split": "dev",
+   "lang": "English",
+   "text": "He didn't went to work today.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g040": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I am agree with you.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g041": {
+   "split": "test",
+   "lang": "English",
+   "text": "The news are very bad today.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g042": {
+   "split": "dev",
+   "lang": "English",
+   "text": "I look forward to see you.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g043": {
+   "split": "test",
+   "lang": "English",
+   "text": "She has two childs.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g044": {
+   "split": "dev",
+   "lang": "English",
+   "text": "The meeting was cancel because of the strike.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g045": {
+   "split": "dev",
+   "lang": "English",
+   "text": "Can you explain me this rule?",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g046": {
+   "split": "test",
+   "lang": "English",
+   "text": "I have been to Paris in 2019.",
+   "has_error": true,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g047": {
+   "split": "dev",
+   "lang": "English",
+   "text": "He speak English very good.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g048": {
+   "split": "test",
+   "lang": "English",
+   "text": "My friend she lives in Berlin.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g049": {
+   "split": "test",
+   "lang": "English",
+   "text": "I didn't saw nothing.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "has_error": true,
+    "confidence": 0.95
+   },
+   "samples": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "g050": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich bin gestern mit meiner Freundin ins Kino gegangen.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g051": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Kannst du mir bitte das Salz geben?",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g052": {
+   "split": "test",
+   "lang": "German",
+   "text": "Wenn ich Zeit hätte, würde ich mehr lesen.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g053": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Der Zug fährt um acht Uhr ab.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g054": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich weiß nicht, ob er morgen kommt.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g055": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Wegen des Regens bleiben wir zu Hause.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g056": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Das Mädchen spielt im Garten.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g057": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich interessiere mich für Sprachwissenschaft.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g058": {
+   "split": "test",
+   "lang": "German",
+   "text": "Nach dem Essen gehen wir spazieren.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    true,
+    false
+   ]
+  },
+  "g059": {
+   "split": "test",
+   "lang": "German",
+   "text": "Sie hat mir ein Buch geschenkt.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g060": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich freue mich auf das Wochenende.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "g061": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Er arbeitet seit drei Jahren bei Bosch.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    null,
+    null,
+    false
+   ]
+  },
+  "g062": {
+   "split": "test",
+   "lang": "German",
+   "text": "Ich habe keine Zeit, weil ich lernen muss.",
+   "has_error": false,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g063": {
+   "split": "test",
+   "lang": "German",
+   "text": "Die Kinder, die dort spielen, sind meine Nachbarn.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    false,
+    null,
+    null
+   ]
+  },
+  "g064": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Morgen fahre ich nach München.",
+   "has_error": false,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    false,
+    false,
+    null,
+    null
+   ]
+  },
+  "g065": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich habe gestern mit meine Freundin ins Kino gegangen.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    true,
+    null,
+    null,
+    null,
+    true
+   ]
+  },
+  "g066": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich bin nach Hause gegangen, weil ich war müde.",
+   "has_error": true,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g067": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Gestern ich habe Fußball gespielt.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    true,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g068": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich gebe den Mann das Buch.",
+   "has_error": true,
+   "base": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    true,
+    null,
+    true,
+    null,
+    null
+   ]
+  },
+  "g069": {
+   "split": "test",
+   "lang": "German",
+   "text": "Das ist der Auto von meinem Vater.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g070": {
+   "split": "test",
+   "lang": "German",
+   "text": "Ich wohne in Stuttgart seit zwei Jahren.",
+   "has_error": false,
+   "base": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "verb": {
+    "has_error": false,
+    "confidence": 0.95
+   },
+   "samples": [
+    null,
+    false,
+    null,
+    null,
+    null
+   ]
+  },
+  "g071": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Er hat nach Berlin gefahren.",
+   "has_error": true,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    false,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g072": {
+   "split": "test",
+   "lang": "German",
+   "text": "Ich fahre mit der Bus zur Uni.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    true,
+    true,
+    null,
+    null
+   ]
+  },
+  "g074": {
+   "split": "test",
+   "lang": "German",
+   "text": "Kannst du mich helfen?",
+   "has_error": true,
+   "base": {
+    "has_error": false
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g075": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich habe das Buch gelest.",
+   "has_error": true,
+   "base": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    true,
+    null,
+    true
+   ]
+  },
+  "g076": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Die Frau, der ich gestern gesehen habe, ist Lehrerin.",
+   "has_error": true,
+   "base": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    null,
+    true,
+    null
+   ]
+  },
+  "g077": {
+   "split": "dev",
+   "lang": "German",
+   "text": "Ich interessiere mich an Musik.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    true,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g078": {
+   "split": "test",
+   "lang": "German",
+   "text": "Du bist größer als ich bin nicht.",
+   "has_error": true,
+   "base": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "g079": {
+   "split": "test",
+   "lang": "German",
+   "text": "Wir gehen zu der Bahnhof.",
+   "has_error": true,
+   "base": {
+    "has_error": true
+   },
+   "verb": {
+    "error": "openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError; openai/gpt-oss-20b: RateLimitError"
+   },
+   "samples": [
+    null,
+    null,
+    true,
+    true,
+    true
+   ]
+  }
+ }
+}

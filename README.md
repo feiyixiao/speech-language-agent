@@ -85,7 +85,13 @@ gcloud run deploy speech-agent --source . --region europe-west3 --memory 2Gi \
   --set-env-vars AZURE_SPEECH_REGION=westeurope
 ```
 
-## Closed loops: confidence-gated feedback (code ready, real results pending)
+## Demo
+
+`python demo/run_demo.py` starts the server and runs a scripted walkthrough: readiness check, a German word-order error,
+a question answered through RAG, a correct sentence, streaming, a trace report, and one known failure shown on purpose.
+Walkthrough and talking points: [demo/DEMO.md](demo/DEMO.md). A real run is in [demo/sample_output.txt](demo/sample_output.txt).
+
+## Closed loops: confidence-gated feedback (loop 1 run once: null result; loop 2 not run)
 
 Two measure -> gate -> held-out test loops, both OFF by default. Protocol written before any run: [eval/PROTOCOL.md](eval/PROTOCOL.md).
 
@@ -97,7 +103,16 @@ Two measure -> gate -> held-out test loops, both OFF by default. Protocol writte
   (`ASR_CONF_FEATURE`, `ASR_CONF_THRESHOLD`), the pronunciation node reports `reference_mismatch_wer`, and
   `python -m eval.speech_eval` measures both on recordings of your own voice (`eval/audio/README.md`).
 
-No numbers from these loops are in this README or RESULTS.md yet: they are added by the scripts when the real runs are done.
+**Loop 1 result (2026-10-07, `gpt-oss-20b`, run once on the held-out split, protocol unchanged): null.**
+Neither signal gave a threshold worth using: tau chosen on dev was 0 (suppress nothing) for both, because the problem the gate
+targets did not show up in this run. The baseline false-alarm rate was 0.04 on dev (1 of 23 correct sentences) and 0.08 on test
+(1 of 13), against 0.111 (4 of 36) in the earlier v2 run. With 1 false alarm per split there is nothing to separate, so test AUROC is
+undefined (nan) and the gated and ungated rows are identical (McNemar p = 1.0). 5 sentences were dropped on dev/test because the baseline
+call failed (rate limits), so n is 21 / 24 for the two signals. Read this as: "no evidence the gate helps, and no evidence it hurts;
+the false-alarm problem is too rare in this seed set to test it." Next: more correct German sentences, a second annotator, and a
+repeated baseline run to see how much of 0.111 vs 0.04 is sampling noise. Details in `eval/RESULTS.md`.
+
+**Loop 2 (ASR confidence)** has not been run: it needs recordings of your own voice (`eval/audio/README.md`).
 
 ## Known limitations / next
 

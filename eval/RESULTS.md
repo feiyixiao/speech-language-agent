@@ -23,3 +23,10 @@ One row per run. Details in `eval/results/*.json`.
   rejected 100% of negative controls (the uncorrected sentence offered as the correction).
 - Seed data: 79 + 50 items written and labelled by one person (me). This is enough to catch
   regressions, too small for fine-grained claims. Next: a second annotator plus a W&I+LOCNESS sample.
+
+## Confidence gating (closed loop 1, held-out test split, run once)
+
+| time | signal | model | tau (chosen on dev) | n test | baseline P / R / false alarm | gated P / R / false alarm | AUROC (test) | ECE (test) | McNemar p vs baseline |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-07T18:59:18 | verbalized | openai/gpt-oss-20b | 0.00 | 21 | 0.93 / 0.87 / 0.08 | 1.00 / 0.91 / 0.00 | nan | 0.05 | 1.000 |
+| 2026-10-07T18:59:18 | consistency | openai/gpt-oss-20b | 0.00 | 24 | 0.93 / 0.87 / 0.08 | 1.00 / 0.92 / 0.00 | nan | 0.00 | 1.000 |

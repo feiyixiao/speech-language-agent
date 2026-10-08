@@ -1,0 +1,32 @@
+model=openai/gpt-oss-20b k=5 T=0.7  dropped (baseline call failed): 5
+
+DEV (n=47), baseline ungated: P 0.96 / R 0.92 / false alarm 0.04 (shown TP 22, FP 1; missed 2; correct sentences kept 22)
+
+[verbalized] dev ungated: P 1.00 / R 1.00 / false alarm 0.00 (shown TP 19, FP 0; missed 0; correct sentences kept 21)
+[verbalized] dev chosen tau=0.00 (max F0.5 on dev): P 1.00 / R 1.00 / false alarm 0.00 (shown TP 19, FP 0; missed 0; correct sentences kept 21); flags suppressed 0%
+[verbalized] dev signal quality: AUROC=nan ECE(3 bins)=0.05 over 19 flagged items (0 are false alarms) -- rough, tiny n
+[verbalized] dev curve (tau, precision, recall, false_alarm, flags suppressed):
+    tau=0.00  P=1.00  R=1.00  FA=0.00  suppressed=0%
+
+[consistency] dev ungated: P 0.96 / R 0.96 / false alarm 0.04 (shown TP 22, FP 1; missed 1; correct sentences kept 22)
+[consistency] dev chosen tau=0.00 (max F0.5 on dev): P 0.96 / R 0.96 / false alarm 0.04 (shown TP 22, FP 1; missed 1; correct sentences kept 22); flags suppressed 0%
+[consistency] dev signal quality: AUROC=0.45 ECE(3 bins)=0.03 over 23 flagged items (1 are false alarms) -- rough, tiny n
+[consistency] dev curve (tau, precision, recall, false_alarm, flags suppressed):
+    tau=0.00  P=0.96  R=0.96  FA=0.04  suppressed=0%
+    tau=0.20  P=0.96  R=0.96  FA=0.04  suppressed=0%
+    tau=0.60  P=0.96  R=0.96  FA=0.04  suppressed=0%
+    tau=0.90  P=0.95  R=0.87  FA=0.04  suppressed=9%
+
+TEST (n=27), baseline: P 0.93 / R 0.87 / false alarm 0.08 (shown TP 13, FP 1; missed 2; correct sentences kept 11)
+
+[verbalized] TEST ungated: P 1.00 / R 0.91 / false alarm 0.00 (shown TP 10, FP 0; missed 1; correct sentences kept 10)
+[verbalized] TEST gated tau=0.00: P 1.00 / R 0.91 / false alarm 0.00 (shown TP 10, FP 0; missed 1; correct sentences kept 10); flags suppressed 0%
+[verbalized] 95% bootstrap CI: false alarm [0.00, 0.00], recall [0.70, 1.00]  (n=21: intervals are WIDE; do not claim more than a direction)
+[verbalized] TEST signal quality: AUROC=nan ECE(3 bins)=0.05 over 10 flagged items (0 false alarms)
+[verbalized] paired vs baseline: only-baseline-correct=0, only-gated-correct=0, exact McNemar p=1.000; vs own ungated: 0/0, p=1.000
+
+[consistency] TEST ungated: P 1.00 / R 0.92 / false alarm 0.00 (shown TP 12, FP 0; missed 1; correct sentences kept 11)
+[consistency] TEST gated tau=0.00: P 1.00 / R 0.92 / false alarm 0.00 (shown TP 12, FP 0; missed 1; correct sentences kept 11); flags suppressed 0%
+[consistency] 95% bootstrap CI: false alarm [0.00, 0.00], recall [0.75, 1.00]  (n=24: intervals are WIDE; do not claim more than a direction)
+[consistency] TEST signal quality: AUROC=nan ECE(3 bins)=0.00 over 12 flagged items (0 false alarms)
+[consistency] paired vs baseline: only-baseline-correct=0, only-gated-correct=0, exact McNemar p=1.000; vs own ungated: 0/0, p=1.000
